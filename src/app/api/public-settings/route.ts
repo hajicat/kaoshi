@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 import { getDb, initDb } from '@/lib/db'
 import { setCsrfCookie } from '@/lib/csrf'
 
-export const runtime = 'edge';
 
 export async function GET() {
   try {

@@ -4,7 +4,6 @@ import { verifyTokenSafe, generateInviteCode } from '@/lib/auth'
 import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 
-export const runtime = 'edge';
 
 export async function GET(req: NextRequest) {
   try {

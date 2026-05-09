@@ -14,7 +14,6 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { getWeekKey, executeAutoMatch, handleManualMatch, executeAutoMatchSafe } from '@/lib/match-engine'
 
-export const runtime = 'edge'
 
 export async function POST(req: NextRequest) {
   try {

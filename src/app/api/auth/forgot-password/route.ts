@@ -4,7 +4,6 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { logSecurityEvent, detectAttackPatterns } from '@/lib/security'
 
-export const runtime = 'edge'
 
 // Token 有效期 30 分钟
 const TOKEN_EXPIRY_MS = 30 * 60 * 1000

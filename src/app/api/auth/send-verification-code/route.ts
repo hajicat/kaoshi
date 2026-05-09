@@ -6,7 +6,6 @@ import { getClientIp, validateCsrfToken } from '@/lib/csrf'
 import { sendVerificationEmail } from '@/lib/email'
 import { logSecurityEvent, detectAttackPatterns } from '@/lib/security'
 
-export const runtime = 'edge'
 
 // 发送验证码的独立限流（首次宽松，后续严格）
 const CODE_SEND_LIMITER = {

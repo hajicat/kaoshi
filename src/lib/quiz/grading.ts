@@ -30,6 +30,7 @@ export function checkAnswer(
 
 export function calculateScore(
   questions: Array<{
+    questionId: string;
     type: string;
     answerJson: string;
     score: number;

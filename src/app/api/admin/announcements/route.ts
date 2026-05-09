@@ -4,7 +4,6 @@ import { getDb, initDb } from '@/lib/db'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { sanitizeForStorage } from '@/lib/validation'
 
-export const runtime = 'edge'
 
 const VALID_AUDIENCE = ['all', 'registered', 'new'] as const
 const VALID_DISMISS = ['once', 'confirm', 'always'] as const

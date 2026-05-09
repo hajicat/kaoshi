@@ -8,7 +8,6 @@ import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { detectAttackPatterns } from '@/lib/security'
 import { scoreGpsSamples, getSchoolShort, isNoEmailSchool, NO_EMAIL_SCHOOLS } from '@/lib/geo'
 
-export const runtime = 'edge'
 
 // ── V2 题目白名单（q1-q35 同 V1，q36 改多选，q37 同 V1，q38-q58 新增）──
 

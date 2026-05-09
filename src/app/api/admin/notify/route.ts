@@ -18,7 +18,6 @@ import { getClientIp } from '@/lib/csrf'
 import { getWeekKey, getPrevWeekKey } from '@/lib/week'
 import { sendMatchNotifications } from '@/lib/match-email'
 
-export const runtime = 'edge'
 
 export async function GET(req: NextRequest) {
   try {

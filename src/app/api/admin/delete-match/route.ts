@@ -7,7 +7,6 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { validateCsrfToken, getCookieName, getClientIp } from '@/lib/csrf'
 import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 
-export const runtime = 'edge'
 
 export async function POST(req: NextRequest) {
   try {

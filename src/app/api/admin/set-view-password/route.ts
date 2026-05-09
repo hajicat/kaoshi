@@ -5,7 +5,6 @@ import { validatePassword } from '@/lib/validation'
 import { getCookieName, validateCsrfToken } from '@/lib/csrf'
 import { logSecurityEvent } from '@/lib/security'
 
-export const runtime = 'edge'
 
 /**
  * POST /api/admin/set-view-password

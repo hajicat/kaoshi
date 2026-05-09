@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   webpack: (config, { isServer, nextRuntime }) => {
     // Don't bundle Node.js modules for edge runtime
     if (nextRuntime === 'edge') {

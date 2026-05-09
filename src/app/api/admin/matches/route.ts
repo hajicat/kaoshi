@@ -7,7 +7,6 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { getWeekKey } from '@/lib/week'
 
-export const runtime = 'edge'
 
 export async function GET(req: NextRequest) {
   try {

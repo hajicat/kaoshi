@@ -18,7 +18,6 @@ import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getClientIp } from '@/lib/csrf'
 
-export const runtime = 'edge'
 
 // Brevo API 配置（与 email.ts 保持一致）
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email'

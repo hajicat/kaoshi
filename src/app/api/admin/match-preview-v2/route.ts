@@ -4,7 +4,6 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { calculateMatchV2, loadUserForV2Matching } from '@/lib/match-engine-v2'
 
-export const runtime = 'edge'
 
 export async function POST(req: NextRequest) {
   try {

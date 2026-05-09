@@ -17,7 +17,6 @@ import { getWeekKey } from '@/lib/week'
 import { calcSafety, calculateMatch, getMatchConfig, clearMatchConfigCache, genderCompatible } from '@/lib/match-engine'
 import { calcSafetyV2, calculateMatchV2, loadUserForV2Matching, getMatchConfigV2, clearMatchConfigV2Cache, genderCompatibleV2 } from '@/lib/match-engine-v2'
 
-export const runtime = 'edge'
 
 export async function GET(req: NextRequest) {
   try {

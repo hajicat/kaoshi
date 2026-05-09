@@ -3,7 +3,6 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { getDb } from '@/lib/db'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 
-export const runtime = 'edge';
 
 // CF Workers 多 isolate 各自独立内存，不使用模块级缓存
 // 每次请求直接查询数据库，确保多 isolate 间数据一致

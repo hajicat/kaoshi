@@ -15,7 +15,6 @@ import { executeAutoMatchSafeV2 } from '@/lib/match-engine-v2'
 import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 
-export const runtime = 'edge'
 
 async function getAlgorithmVersion(db: ReturnType<typeof getDb>): Promise<'v1' | 'v2'> {
   try {

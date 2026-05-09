@@ -5,7 +5,6 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getClientIp, validateCsrfToken } from '@/lib/csrf'
 import { detectAttackPatterns } from '@/lib/security'
 
-export const runtime = 'edge'
 
 /**
  * 用 SHA-256 哈希 token（与 forgot-password 保持一致）

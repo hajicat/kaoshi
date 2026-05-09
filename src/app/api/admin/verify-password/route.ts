@@ -4,7 +4,6 @@ import { verifyTokenSafe, verifyPassword } from '@/lib/auth'
 import { getCookieName, validateCsrfToken } from '@/lib/csrf'
 import { logSecurityEvent } from '@/lib/security'
 
-export const runtime = 'edge'
 
 /**
  * POST /api/admin/verify-password

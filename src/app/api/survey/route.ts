@@ -8,7 +8,6 @@ import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { scoreGpsSamples, isNoEmailSchool, getSchoolShort } from '@/lib/geo'
 import { detectAttackPatterns } from '@/lib/security'
 
-export const runtime = 'edge';
 
 // Valid answer options for each of the 32 questions (whitelist)
 const VALID_OPTIONS: Record<string, string[]> = {

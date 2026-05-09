@@ -4,7 +4,6 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { getMatchConfigV2, saveMatchConfigV2, clearMatchConfigV2Cache } from '@/lib/match-engine-v2'
 
-export const runtime = 'edge'
 
 export async function GET(req: NextRequest) {
   try {

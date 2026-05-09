@@ -9,7 +9,6 @@ import { haversineDistance, verifyLocation } from '@/lib/geo'
 import { verifyCode } from '@/lib/email'
 import { logSecurityEvent, detectAttackPatterns } from '@/lib/security'
 
-export const runtime = 'edge'
 
 // 学校邮箱域名白名单（需校内邮箱的学校）
 const SCHOOL_EMAIL_DOMAINS = [

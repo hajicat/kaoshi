@@ -9,7 +9,6 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { resetWeekMatchLock } from '@/lib/match-engine'
 import { resetWeekMatchLockV2 } from '@/lib/match-engine-v2'
 
-export const runtime = 'edge'
 
 export async function POST(req: NextRequest) {
   try {

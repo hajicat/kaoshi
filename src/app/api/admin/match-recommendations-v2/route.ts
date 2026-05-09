@@ -4,7 +4,6 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { calculateMatchV2, calcSafetyV2, loadUserForV2Matching, type V2MatchResult } from '@/lib/match-engine-v2'
 
-export const runtime = 'edge'
 
 const DEFAULT_LIMIT = 20
 

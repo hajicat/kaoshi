@@ -3,7 +3,6 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { getDb, initDb } from '@/lib/db'
 
-export const runtime = 'edge'
 
 // 所有学校列表（排序：吉大→东师(211)→吉动(创始人)→长大 → 公办其余 → 民办）
 const ALL_SCHOOLS = [

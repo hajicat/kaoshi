@@ -8,7 +8,6 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { getCookieName, validateCsrfToken } from '@/lib/csrf'
 import { getWeekKey, getPrevWeekKey } from '@/lib/week'
 
-export const runtime = 'edge'
 
 // 将数据库 UTC 时间字符串转为北京时间（UTC+8）格式化显示
 function formatBeijingTime(utcStr: string | null | undefined): string {

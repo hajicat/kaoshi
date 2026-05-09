@@ -4,7 +4,6 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { getCookieName } from '@/lib/csrf'
 import { getWeekKey, getPrevWeekKey } from '@/lib/week'
 
-export const runtime = 'edge'
 
 function formatBeijingTime(utcStr: string | null | undefined): string {
   if (!utcStr) return '-'

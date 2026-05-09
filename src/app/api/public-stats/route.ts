@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getDb, initDb } from '@/lib/db'
 
-export const runtime = 'edge';
 
 /**
  * Public stats endpoint - no auth required.

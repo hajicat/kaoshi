@@ -3,7 +3,6 @@ import { getDb, initDb } from '@/lib/db'
 import { verifyTokenSafe } from '@/lib/auth'
 import { getCookieName } from '@/lib/csrf'
 
-export const runtime = 'edge';
 
 export async function GET(req: NextRequest) {
   try {

@@ -4,6 +4,7 @@ import { importJobs } from "@/lib/db/schema";
 import { requireAdmin } from "@/lib/auth/permissions";
 import { nanoid } from "nanoid";
 import { jsonOk, handleApiError } from "@/lib/api-helpers";
+import { eq } from "drizzle-orm";
 
 // 获取导入任务列表
 export async function GET() {
@@ -55,7 +56,7 @@ export async function POST(req: NextRequest) {
           status: "parsed",
           updatedAt: new Date().toISOString(),
         })
-        .where(importJobs.id);
+        .where(eq(importJobs.id, id));
 
       return jsonOk({ id, status: "parsed" }, 201);
     } catch {
@@ -66,7 +67,7 @@ export async function POST(req: NextRequest) {
           errorMessage: "文件解析失败",
           updatedAt: new Date().toISOString(),
         })
-        .where(importJobs.id);
+        .where(eq(importJobs.id, id));
 
       return jsonOk({ id, status: "failed" }, 201);
     }

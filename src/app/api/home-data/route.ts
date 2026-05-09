@@ -3,7 +3,6 @@ import { getDb, initDb } from '@/lib/db'
 import { verifyTokenSafe } from '@/lib/auth'
 import { setCsrfCookie, getCookieName } from '@/lib/csrf'
 
-export const runtime = 'edge';
 
 /**
  * Combined home data endpoint - single API call for homepage.

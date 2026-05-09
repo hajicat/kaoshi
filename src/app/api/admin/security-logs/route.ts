@@ -3,7 +3,6 @@ import { getDb, initDb } from '@/lib/db'
 import { verifyTokenSafe } from '@/lib/auth'
 import { getCookieName, validateCsrfToken } from '@/lib/csrf'
 
-export const runtime = 'edge'
 
 // 合法的事件类型白名单（防注入）
 const VALID_EVENT_TYPES = [

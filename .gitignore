@@ -1,5 +1,7 @@
 node_modules/
 .next/
+.open-next/
+.worker-next/
 .env.local
 .env
 drizzle/migrations/*.ts

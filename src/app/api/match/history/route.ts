@@ -25,7 +25,6 @@ async function getAlgorithmVersion(db: ReturnType<typeof getDb>): Promise<'v1' |
   } catch { return 'v1' }
 }
 
-export const runtime = 'edge'
 
 export async function GET(req: NextRequest) {
   try {

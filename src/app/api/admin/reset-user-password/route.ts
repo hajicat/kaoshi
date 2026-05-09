@@ -6,7 +6,6 @@ import { getCookieName, validateCsrfToken, getClientIp } from '@/lib/csrf'
 import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { logSecurityEvent } from '@/lib/security'
 
-export const runtime = 'edge'
 
 /**
  * POST /api/admin/reset-user-password

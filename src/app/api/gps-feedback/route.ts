@@ -4,7 +4,6 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getClientIp, validateCsrfToken } from '@/lib/csrf'
 import { verifyTokenSafe, detectAttackPatterns } from '@/lib/security'
 
-export const runtime = 'edge'
 
 export async function POST(req: NextRequest) {
   try {

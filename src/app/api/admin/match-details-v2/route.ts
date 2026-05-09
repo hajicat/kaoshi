@@ -6,7 +6,6 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getWeekKey } from '@/lib/week'
 import { calcSafetyV2, calculateMatchV2, getMatchConfigV2, genderCompatibleV2, loadUserForV2Matching } from '@/lib/match-engine-v2'
 
-export const runtime = 'edge'
 
 export async function GET(req: NextRequest) {
   try {

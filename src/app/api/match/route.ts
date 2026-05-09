@@ -6,7 +6,6 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { isRevealWindow, getWeekKey, getPrevWeekKey, isMatchingWindow } from '@/lib/week'
 
-export const runtime = 'edge';
 
 const CONFLICT_NAMES: Record<string, string> = {
   dolphin: '🐬 海豚型（回避冲突）',
