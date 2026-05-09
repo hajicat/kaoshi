@@ -15,3 +15,9 @@ NODE_ENV = "production"
 # npx wrangler secret put TURSO_AUTH_TOKEN
 # npx wrangler secret put JWT_SECRET
 # npx wrangler secret put ENCRYPT_SECRET
+
+# 解决 @libsql/isomorphic-ws 在 workerd 条件下 web.mjs 未被复制的问题
+[[rules]]
+type = "ESModule"
+globs = ["**/*.mjs"]
+fallthrough = true
