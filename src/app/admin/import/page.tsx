@@ -44,13 +44,17 @@ export default function AdminImportPage() {
 
     setUploading(true);
     try {
-      const formData = new FormData();
-      formData.append("file", file);
+      // 读取文件为 base64，用 JSON 发送（避免 Cloudflare Workers 对 multipart/form-data 的兼容问题）
+      const arrayBuffer = await file.arrayBuffer();
+      const base64 = btoa(
+        new Uint8Array(arrayBuffer).reduce((data, byte) => data + String.fromCharCode(byte), "")
+      );
 
-      console.log("[upload] 开始上传:", file.name, file.size, "bytes", file.type);
+      console.log("[upload] 开始上传:", file.name, file.size, "bytes");
       const res = await fetch("/api/admin/import-jobs", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ filename: file.name, content: base64 }),
       });
       console.log("[upload] 响应状态:", res.status, res.statusText);
       const data = await res.json();

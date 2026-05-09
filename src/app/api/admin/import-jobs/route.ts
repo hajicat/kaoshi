@@ -7,13 +7,12 @@ import { jsonOk, handleApiError } from "@/lib/api-helpers";
 import { eq } from "drizzle-orm";
 import { parseWithDeepSeek } from "@/lib/ai/deepseek";
 
-async function extractText(file: File): Promise<string> {
-  const name = file.name.toLowerCase();
+async function extractText(filename: string, buffer: Uint8Array): Promise<string> {
+  const name = filename.toLowerCase();
 
   if (name.endsWith(".pdf")) {
     const { extractText: extractPdfText } = await import("unpdf");
-    const buffer = await file.arrayBuffer();
-    const { text } = await extractPdfText(new Uint8Array(buffer), { mergePages: true });
+    const { text } = await extractPdfText(buffer, { mergePages: true });
     if (!text || text.trim().length === 0) {
       throw new Error("PDF 内容为空或无法提取文字（可能是扫描件）");
     }
@@ -21,7 +20,7 @@ async function extractText(file: File): Promise<string> {
   }
 
   // txt, md, 其他文本文件
-  return file.text();
+  return new TextDecoder().decode(buffer);
 }
 
 export const dynamic = 'force-dynamic';
@@ -37,15 +36,38 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  console.log("[import] POST 收到请求, content-type:", req.headers.get("content-type"), "content-length:", req.headers.get("content-length"));
+  console.log("[import] POST 收到请求, content-type:", req.headers.get("content-type"));
   try {
     const admin = await requireAdmin();
     console.log("[import] admin 认证通过:", admin.userId);
-    const formData = await req.formData();
-    const file = formData.get("file") as File;
 
-    if (!file) {
-      return jsonOk({ message: "请上传文件" }, 400);
+    let filename: string;
+    let fileBuffer: Uint8Array;
+
+    const contentType = req.headers.get("content-type") || "";
+
+    if (contentType.includes("application/json")) {
+      // JSON + base64 模式
+      const body = await req.json();
+      filename = body.filename;
+      const base64Content = body.content;
+      if (!filename || !base64Content) {
+        return jsonOk({ message: "缺少文件名或内容" }, 400);
+      }
+      const binary = atob(base64Content);
+      fileBuffer = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) {
+        fileBuffer[i] = binary.charCodeAt(i);
+      }
+    } else {
+      // FormData 模式（兼容旧方式）
+      const formData = await req.formData();
+      const file = formData.get("file") as File;
+      if (!file) {
+        return jsonOk({ message: "请上传文件" }, 400);
+      }
+      filename = file.name;
+      fileBuffer = new Uint8Array(await file.arrayBuffer());
     }
 
     const now = new Date().toISOString();
@@ -53,7 +75,7 @@ export async function POST(req: NextRequest) {
 
     await db.insert(importJobs).values({
       id,
-      filename: file.name,
+      filename,
       status: "parsing",
       createdBy: admin.userId,
       createdAt: now,
@@ -61,7 +83,7 @@ export async function POST(req: NextRequest) {
     });
 
     try {
-      const content = await extractText(file);
+      const content = await extractText(filename, fileBuffer);
       const parsed = await parseWithDeepSeek(content);
 
       await db
