@@ -30,14 +30,14 @@ export default function AdminImportPage() {
     loadJobs();
   }, []);
 
-  const MAX_FILE_SIZE = 900 * 1024; // 900KB，留余量给 multipart 开销
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     if (file.size > MAX_FILE_SIZE) {
-      alert(`文件过大（${(file.size / 1024).toFixed(0)}KB），最大支持 900KB`);
+      alert(`文件过大（${(file.size / 1024 / 1024).toFixed(1)}MB），最大支持 10MB`);
       e.target.value = "";
       return;
     }
