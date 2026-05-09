@@ -1,6 +1,6 @@
-name = "jlai-dating"
+name = "kaoshi"
 compatibility_date = "2024-09-23"
+main = ".open-next/worker.js"
 
-# Cloudflare Pages 配置
-# 通过 Pages Dashboard 部署，不需要额外配置
-# 环境变量在 Pages Dashboard > Settings > Environment variables 中设置
+# Cloudflare Workers 配置
+# 环境变量在 Workers Dashboard > Settings > Environment variables 中设置
