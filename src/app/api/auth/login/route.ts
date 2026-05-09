@@ -47,6 +47,8 @@ export async function POST(req: NextRequest) {
     });
   } catch (error) {
     console.error("Login error:", error);
-    return handleApiError(error);
+    const msg = error instanceof Error ? error.message : String(error);
+    const stack = error instanceof Error ? error.stack : "";
+    return jsonError(`Login failed: ${msg}\n${stack}`, 500);
   }
 }
