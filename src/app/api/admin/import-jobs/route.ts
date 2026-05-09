@@ -7,8 +7,22 @@ import { jsonOk, handleApiError } from "@/lib/api-helpers";
 import { eq } from "drizzle-orm";
 import { parseWithDeepSeek } from "@/lib/ai/deepseek";
 
+async function extractText(file: File): Promise<string> {
+  const name = file.name.toLowerCase();
 
-// 获取导入任务列表
+  if (name.endsWith(".pdf")) {
+    const { extractText: extractPdfText } = await import("unpdf");
+    const buffer = await file.arrayBuffer();
+    const { text } = await extractPdfText(new Uint8Array(buffer), { mergePages: true });
+    if (!text || text.trim().length === 0) {
+      throw new Error("PDF 内容为空或无法提取文字（可能是扫描件）");
+    }
+    return text;
+  }
+
+  // txt, md, 其他文本文件
+  return file.text();
+}
 
 export const dynamic = 'force-dynamic';
 
@@ -21,8 +35,6 @@ export async function GET() {
     return handleApiError(error);
   }
 }
-
-// 创建导入任务（上传文件）
 
 export async function POST(req: NextRequest) {
   try {
@@ -37,9 +49,6 @@ export async function POST(req: NextRequest) {
     const now = new Date().toISOString();
     const id = nanoid();
 
-    // 读取文件内容
-    const content = await file.text();
-
     await db.insert(importJobs).values({
       id,
       filename: file.name,
@@ -50,6 +59,7 @@ export async function POST(req: NextRequest) {
     });
 
     try {
+      const content = await extractText(file);
       const parsed = await parseWithDeepSeek(content);
 
       await db

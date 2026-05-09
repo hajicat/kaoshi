@@ -73,7 +73,7 @@ export default function AdminImportPage() {
           {uploading ? "上传中..." : "上传文件"}
           <input
             type="file"
-            accept=".txt,.md,.csv"
+            accept=".txt,.md,.csv,.pdf"
             onChange={handleUpload}
             disabled={uploading}
             className="hidden"
@@ -83,7 +83,7 @@ export default function AdminImportPage() {
 
       <div className="bg-blue-50 rounded-lg p-4 mb-6 text-sm text-blue-800">
         <p className="font-medium mb-1">支持的文件格式：</p>
-        <p>.txt .md .csv — 每题一行，选项用 A/B/C/D 标记，答案行以"答案："开头</p>
+        <p>.pdf .txt .md .csv — AI 自动识别题目类型、选项、答案和解析</p>
       </div>
 
       {/* 任务列表 */}
