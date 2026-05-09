@@ -5,9 +5,11 @@ import { getCookieName } from '@/lib/csrf'
 const MAX_BODY_SIZE = 1024 * 1024
 
 export function middleware(request: NextRequest) {
-  // ---- Request Body Size Limit ----
+  // ---- Request Body Size Limit (skip file upload endpoints) ----
+  const pathname = request.nextUrl.pathname
+  const isUploadEndpoint = pathname.startsWith('/api/admin/import-jobs') && request.method === 'POST'
   const contentLength = request.headers.get('content-length')
-  if (contentLength && Number(contentLength) > MAX_BODY_SIZE) {
+  if (!isUploadEndpoint && contentLength && Number(contentLength) > MAX_BODY_SIZE) {
     return new NextResponse(
       JSON.stringify({ error: '请求体过大' }),
       {
