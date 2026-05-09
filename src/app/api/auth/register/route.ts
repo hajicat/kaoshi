@@ -10,6 +10,7 @@ import { verifyCode } from '@/lib/email'
 import { logSecurityEvent, detectAttackPatterns } from '@/lib/security'
 
 
+
 // 学校邮箱域名白名单（需校内邮箱的学校）
 const SCHOOL_EMAIL_DOMAINS = [
   'jlu.edu.cn',           // 吉林大学（教职工/学生）
@@ -65,6 +66,9 @@ async function buildSuccessResponse(userId: number, nickname: string, email: str
   setAuthCookies(response, token)
   return setCsrfCookie(response)
 }
+
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {

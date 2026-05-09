@@ -5,7 +5,11 @@ import { eq, and } from "drizzle-orm";
 import { requireUser } from "@/lib/auth/permissions";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 获取答题详情（含已保存的答案）
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ attemptId: string }> }

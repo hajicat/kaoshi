@@ -6,7 +6,11 @@ import { nanoid } from "nanoid";
 import { requireUser } from "@/lib/auth/permissions";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 获取 PK 列表（等待中的 + 我参与的）
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const user = await requireUser();
@@ -34,6 +38,7 @@ export async function GET() {
 }
 
 // 创建 PK 对战
+
 export async function POST(req: NextRequest) {
   try {
     const user = await requireUser();

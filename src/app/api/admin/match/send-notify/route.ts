@@ -9,6 +9,10 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { sendOneEmail } from '@/lib/match-email'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     // ── 管理员认证 ──

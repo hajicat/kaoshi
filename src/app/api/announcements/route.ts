@@ -4,6 +4,10 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const db = getDb()
@@ -68,6 +72,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ announcements: [] })
   }
 }
+
 
 export async function POST(req: NextRequest) {
   try {

@@ -8,6 +8,10 @@ import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { getWeekKey } from '@/lib/week'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')

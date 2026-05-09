@@ -10,6 +10,10 @@ import { resetWeekMatchLock } from '@/lib/match-engine'
 import { resetWeekMatchLockV2 } from '@/lib/match-engine-v2'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     // ── 身份验证 ──

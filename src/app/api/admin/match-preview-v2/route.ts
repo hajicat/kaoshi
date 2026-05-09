@@ -5,6 +5,10 @@ import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { calculateMatchV2, loadUserForV2Matching } from '@/lib/match-engine-v2'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')

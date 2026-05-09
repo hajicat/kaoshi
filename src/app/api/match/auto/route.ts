@@ -16,12 +16,16 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 
 
+
 async function getAlgorithmVersion(db: ReturnType<typeof getDb>): Promise<'v1' | 'v2'> {
   try {
     const res = await db.execute({ sql: `SELECT value FROM settings WHERE key = 'algorithm_version'`, args: [] })
     return (res.rows[0] as any)?.value === 'v2' ? 'v2' : 'v1'
   } catch { return 'v1' }
 }
+
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {

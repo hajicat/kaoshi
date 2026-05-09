@@ -7,7 +7,11 @@ import { requireAdmin } from "@/lib/auth/permissions";
 import { ParsedQuestionBankSchema } from "@/lib/validation/question";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 确认导入题目到题库
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }

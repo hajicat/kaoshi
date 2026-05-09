@@ -5,6 +5,7 @@ import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { logSecurityEvent, detectAttackPatterns } from '@/lib/security'
 
 
+
 // Token 有效期 30 分钟
 const TOKEN_EXPIRY_MS = 30 * 60 * 1000
 // 同一邮箱冷却时间（防刷）
@@ -105,6 +106,9 @@ function buildResetEmailHtml(resetUrl: string): string {
     </div>
   `
 }
+
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {

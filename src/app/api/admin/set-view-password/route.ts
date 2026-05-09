@@ -6,6 +6,7 @@ import { getCookieName, validateCsrfToken } from '@/lib/csrf'
 import { logSecurityEvent } from '@/lib/security'
 
 
+
 /**
  * POST /api/admin/set-view-password
  * Body: { password: string }
@@ -13,6 +14,9 @@ import { logSecurityEvent } from '@/lib/security'
  * 设置/修改管理员查看详情的独立二级密码
  * 存储在 settings 表 admin_view_password_hash 键中
  */
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')
@@ -87,6 +91,7 @@ export async function POST(req: NextRequest) {
  *
  * 检查是否已设置过二级密码
  */
+
 export async function GET(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')

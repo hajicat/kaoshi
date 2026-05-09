@@ -4,6 +4,10 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { getCookieName } from '@/lib/csrf'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     // Auth check - only admins can view stats

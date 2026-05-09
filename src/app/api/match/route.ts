@@ -7,6 +7,7 @@ import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { isRevealWindow, getWeekKey, getPrevWeekKey, isMatchingWindow } from '@/lib/week'
 
 
+
 const CONFLICT_NAMES: Record<string, string> = {
   dolphin: '🐬 海豚型（回避冲突）',
   cat: '🐱 猫型（焦虑敏感）',
@@ -22,6 +23,9 @@ async function getAlgorithmVersion(db: ReturnType<typeof getDb>): Promise<'v1' |
     return val === 'v2' ? 'v2' : 'v1'
   } catch { return 'v1' }
 }
+
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   try {
@@ -228,6 +232,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: '获取匹配失败' }, { status: 500 })
   }
 }
+
 
 export async function POST(req: NextRequest) {
   try {

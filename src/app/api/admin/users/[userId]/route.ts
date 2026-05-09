@@ -6,7 +6,11 @@ import { requireAdmin } from "@/lib/auth/permissions";
 import { UpdateUserSchema } from "@/lib/validation/auth";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 获取单个用户
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ userId: string }> }
@@ -38,6 +42,7 @@ export async function GET(
 }
 
 // 更新用户
+
 export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ userId: string }> }
@@ -70,6 +75,7 @@ export async function PATCH(
 }
 
 // 删除用户（软删除 → 禁用）
+
 export async function DELETE(
   _req: NextRequest,
   { params }: { params: Promise<{ userId: string }> }

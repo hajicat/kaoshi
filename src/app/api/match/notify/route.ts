@@ -23,6 +23,10 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     // ── 身份验证 ──

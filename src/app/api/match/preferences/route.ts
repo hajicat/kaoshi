@@ -4,6 +4,7 @@ import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { getDb, initDb } from '@/lib/db'
 
 
+
 // 所有学校列表（排序：吉大→东师(211)→吉动(创始人)→长大 → 公办其余 → 民办）
 const ALL_SCHOOLS = [
   // ── 优先位 ──
@@ -41,6 +42,9 @@ const ALL_SCHOOLS = [
 ]
 
 /** GET: 读取当前用户的匹配学校偏好 */
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const cookieName = getCookieName('token')
@@ -92,6 +96,7 @@ export async function GET(request: NextRequest) {
 }
 
 /** POST: 保存匹配学校偏好 */
+
 export async function POST(request: NextRequest) {
   try {
     const cookieName = getCookieName('token')

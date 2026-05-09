@@ -10,11 +10,13 @@ import { getDb, initDb } from '@/lib/db'
 import { verifyTokenSafe } from '@/lib/auth'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import {
+
   calculateMatch,
   calcSafety,
   type MatchResult,
 } from '@/lib/match-engine'
 import {
+
   loadUserForV2Matching,
   calcSafetyV2,
   calculateMatchV2,
@@ -32,6 +34,9 @@ async function getAlgorithmVersion(db: ReturnType<typeof getDb>): Promise<'v1' |
     return (res.rows[0] as any)?.value === 'v2' ? 'v2' : 'v1'
   } catch { return 'v1' }
 }
+
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   function parsePrefs(raw: string | null): Set<string> {

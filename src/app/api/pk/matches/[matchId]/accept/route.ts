@@ -5,7 +5,11 @@ import { eq } from "drizzle-orm";
 import { requireUser } from "@/lib/auth/permissions";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 接受 PK 挑战
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   _req: NextRequest,
   { params }: { params: Promise<{ matchId: string }> }

@@ -3,6 +3,10 @@ import { getDb, initDb } from '@/lib/db'
 import { setCsrfCookie } from '@/lib/csrf'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const db = getDb()

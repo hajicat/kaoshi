@@ -13,6 +13,10 @@ import { calculateMatch } from '@/lib/match-engine'
 import { calculateMatchV2, loadUserForV2Matching } from '@/lib/match-engine-v2'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     // ── 身份验证 ──

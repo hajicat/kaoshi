@@ -5,7 +5,11 @@ import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { calculateMatchV2, calcSafetyV2, loadUserForV2Matching, type V2MatchResult } from '@/lib/match-engine-v2'
 
 
+
 const DEFAULT_LIMIT = 20
+
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   const parsePrefs = (raw: string | null | undefined): Set<string> => {

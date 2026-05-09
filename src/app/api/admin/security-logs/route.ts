@@ -4,6 +4,7 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { getCookieName, validateCsrfToken } from '@/lib/csrf'
 
 
+
 // 合法的事件类型白名单（防注入）
 const VALID_EVENT_TYPES = [
   'login_fail', 'login_locked', 'rate_limited',
@@ -24,6 +25,9 @@ const VALID_SEVERITIES = ['info', 'warning', 'critical']
  *   ip      - 按 IP 搜索
  *   days    - 查询最近 N 天的日志（默认 30）
  */
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')
@@ -131,6 +135,7 @@ export async function GET(req: NextRequest) {
  *
  * Body: { beforeDays: number } — 删除 N 天前的日志（最小 7 天，防止误删）
  */
+
 export async function DELETE(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')

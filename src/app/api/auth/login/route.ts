@@ -7,6 +7,10 @@ import { setSessionCookie } from "@/lib/auth/session";
 import { LoginSchema } from "@/lib/validation/auth";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();

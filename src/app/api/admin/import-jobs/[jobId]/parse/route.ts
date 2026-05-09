@@ -6,7 +6,11 @@ import { requireAdmin } from "@/lib/auth/permissions";
 import { buildParsePrompt } from "@/lib/ai/prompt";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 触发 AI 解析
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   _req: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }

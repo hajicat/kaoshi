@@ -7,6 +7,7 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { logSecurityEvent } from '@/lib/security'
 
 
+
 /**
  * POST /api/admin/reset-user-password
  * Body: { userId: number, newPassword: string, confirmPassword: string }
@@ -20,6 +21,9 @@ import { logSecurityEvent } from '@/lib/security'
  *   - 新密码强度校验（与 change-password 一致）
  *   - 不允许重置自己的密码（应走正常改密流程）
  */
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     // ── 身份验证 ──

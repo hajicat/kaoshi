@@ -7,6 +7,10 @@ import { getWeekKey } from '@/lib/week'
 import { calcSafetyV2, calculateMatchV2, getMatchConfigV2, genderCompatibleV2, loadUserForV2Matching } from '@/lib/match-engine-v2'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')

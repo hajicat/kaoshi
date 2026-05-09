@@ -7,7 +7,11 @@ import { calculateScore } from "@/lib/quiz/grading";
 import { finishMatch } from "@/lib/pk/pk-service";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 提交 PK 答案
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ matchId: string }> }

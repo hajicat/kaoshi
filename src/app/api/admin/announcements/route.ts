@@ -5,8 +5,12 @@ import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { sanitizeForStorage } from '@/lib/validation'
 
 
+
 const VALID_AUDIENCE = ['all', 'registered', 'new'] as const
 const VALID_DISMISS = ['once', 'confirm', 'always'] as const
+
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   try {
@@ -32,6 +36,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: '获取公告失败' }, { status: 500 })
   }
 }
+
 
 export async function POST(req: NextRequest) {
   try {
@@ -70,6 +75,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: '创建公告失败' }, { status: 500 })
   }
 }
+
 
 export async function PUT(req: NextRequest) {
   try {
@@ -136,6 +142,7 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json({ error: '更新公告失败' }, { status: 500 })
   }
 }
+
 
 export async function DELETE(req: NextRequest) {
   try {

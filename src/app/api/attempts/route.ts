@@ -4,7 +4,11 @@ import { eq, and } from "drizzle-orm";
 import { requireUser } from "@/lib/auth/permissions";
 import { jsonOk, handleApiError } from "@/lib/api-helpers";
 
+
 // 获取用户的答题记录列表
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const user = await requireUser();

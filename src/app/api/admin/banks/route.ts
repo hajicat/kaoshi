@@ -7,7 +7,11 @@ import { requireAdmin } from "@/lib/auth/permissions";
 import { CreateQuestionBankSchema } from "@/lib/validation/question";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 获取题库列表
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     await requireAdmin();
@@ -19,6 +23,7 @@ export async function GET() {
 }
 
 // 创建题库
+
 export async function POST(req: NextRequest) {
   try {
     const admin = await requireAdmin();

@@ -4,6 +4,7 @@ import { getDb } from '@/lib/db'
 import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 
 
+
 // CF Workers 多 isolate 各自独立内存，不使用模块级缓存
 // 每次请求直接查询数据库，确保多 isolate 间数据一致
 
@@ -45,6 +46,9 @@ async function loadSettings(db: ReturnType<typeof getDb>, publicOnly = false) {
   return settings
 }
 
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')
@@ -73,6 +77,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: '获取设置失败' }, { status: 500 })
   }
 }
+
 
 export async function POST(req: NextRequest) {
   try {

@@ -6,7 +6,11 @@ import { nanoid } from "nanoid";
 import { requireUser } from "@/lib/auth/permissions";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 开始答题（创建 attempt）
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   _req: NextRequest,
   { params }: { params: Promise<{ bankId: string }> }

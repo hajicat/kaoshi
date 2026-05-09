@@ -2,6 +2,10 @@ import { requireUser } from "@/lib/auth/permissions";
 import { getUserFromDb } from "@/lib/auth/permissions";
 import { jsonOk, handleApiError } from "@/lib/api-helpers";
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const session = await requireUser();

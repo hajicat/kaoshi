@@ -5,7 +5,11 @@ import { eq } from "drizzle-orm";
 import { requireAdmin } from "@/lib/auth/permissions";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 获取导入任务详情
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }

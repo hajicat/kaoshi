@@ -8,6 +8,10 @@ import { validateCsrfToken, getCookieName, getClientIp } from '@/lib/csrf'
 import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')

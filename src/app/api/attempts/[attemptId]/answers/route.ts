@@ -6,7 +6,11 @@ import { nanoid } from "nanoid";
 import { requireUser } from "@/lib/auth/permissions";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 保存/更新单题答案（答题过程中自动保存）
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ attemptId: string }> }

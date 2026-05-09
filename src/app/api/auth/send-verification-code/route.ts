@@ -7,11 +7,15 @@ import { sendVerificationEmail } from '@/lib/email'
 import { logSecurityEvent, detectAttackPatterns } from '@/lib/security'
 
 
+
 // 发送验证码的独立限流（首次宽松，后续严格）
 const CODE_SEND_LIMITER = {
   windowMs: 60 * 60 * 1000, // 1 小时
   max: 20,
 }
+
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {

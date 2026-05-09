@@ -5,6 +5,10 @@ import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { executeAutoMatchV2, executeAutoMatchSafeV2, handleManualMatchV2 } from '@/lib/match-engine-v2'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')

@@ -5,6 +5,10 @@ import { getClientIp, validateCsrfToken } from '@/lib/csrf'
 import { verifyTokenSafe, detectAttackPatterns } from '@/lib/security'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     // CSRF 校验
@@ -72,6 +76,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
+
 export async function GET(req: NextRequest) {
   try {
     // 管理员权限校验
@@ -115,6 +120,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: '获取失败' }, { status: 500 })
   }
 }
+
 
 export async function DELETE(req: NextRequest) {
   try {

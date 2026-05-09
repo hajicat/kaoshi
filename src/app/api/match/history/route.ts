@@ -16,6 +16,7 @@ import { decrypt } from '@/lib/crypto'
 import { getClientIp, getCookieName } from '@/lib/csrf'
 import { isRevealWindow, getWeekKey, getPrevWeekKey } from '@/lib/week'
 
+
 /** 读取当前算法版本 */
 async function getAlgorithmVersion(db: ReturnType<typeof getDb>): Promise<'v1' | 'v2'> {
   try {
@@ -25,6 +26,9 @@ async function getAlgorithmVersion(db: ReturnType<typeof getDb>): Promise<'v1' |
   } catch { return 'v1' }
 }
 
+
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   try {

@@ -5,6 +5,7 @@ import { getCookieName } from '@/lib/csrf'
 import { getWeekKey, getPrevWeekKey } from '@/lib/week'
 
 
+
 function formatBeijingTime(utcStr: string | null | undefined): string {
   if (!utcStr) return '-'
   try {
@@ -15,6 +16,9 @@ function formatBeijingTime(utcStr: string | null | undefined): string {
     return `${bj.getUTCFullYear()}-${pad(bj.getUTCMonth() + 1)}-${pad(bj.getUTCDate())} ${pad(bj.getUTCHours())}:${pad(bj.getUTCMinutes())}:${pad(bj.getUTCSeconds())}`
   } catch { return String(utcStr) }
 }
+
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   try {

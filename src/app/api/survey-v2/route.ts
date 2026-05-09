@@ -9,6 +9,7 @@ import { detectAttackPatterns } from '@/lib/security'
 import { scoreGpsSamples, getSchoolShort, isNoEmailSchool, NO_EMAIL_SCHOOLS } from '@/lib/geo'
 
 
+
 // ── V2 题目白名单（q1-q35 同 V1，q36 改多选，q37 同 V1，q38-q58 新增）──
 
 const VALID_OPTIONS: Record<string, string[]> = {
@@ -89,6 +90,9 @@ const Q45_OPTIONS = [
 ]
 
 const TOTAL_QUESTIONS = 58
+
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {
@@ -307,6 +311,7 @@ export async function POST(req: NextRequest) {
 }
 
 // GET：读取用户已有的 V2 问卷答案
+
 export async function GET(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')

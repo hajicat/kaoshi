@@ -5,6 +5,10 @@ import { checkRateLimit, API_LIMITER } from '@/lib/rate-limit'
 import { getClientIp, validateCsrfToken, getCookieName } from '@/lib/csrf'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')
@@ -32,6 +36,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: '获取邀请码失败' }, { status: 500 })
   }
 }
+
 
 export async function POST(req: NextRequest) {
   try {

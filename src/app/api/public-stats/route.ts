@@ -2,10 +2,14 @@ import { NextResponse } from 'next/server'
 import { getDb, initDb } from '@/lib/db'
 
 
+
 /**
  * Public stats endpoint - no auth required.
  * Used by the homepage to display "X 位吉动人完成测试"
  */
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const db = getDb()

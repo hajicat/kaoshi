@@ -6,7 +6,11 @@ import { requireUser } from "@/lib/auth/permissions";
 import { calculateScore } from "@/lib/quiz/grading";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 提交答题
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   _req: NextRequest,
   { params }: { params: Promise<{ attemptId: string }> }

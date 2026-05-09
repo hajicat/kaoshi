@@ -5,6 +5,10 @@ import { getClientIp, validateCsrfToken } from '@/lib/csrf'
 import { detectAttackPatterns } from '@/lib/security'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     // CSRF 校验（GPS 验证虽然是读操作，但由用户浏览器主动触发）
@@ -53,6 +57,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: '定位验证失败' }, { status: 500 })
   }
 }
+
 
 export async function GET() {
   // 返回所有校区列表（与 geo.ts CAMPUSES 保持一致）

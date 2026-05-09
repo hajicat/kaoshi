@@ -19,6 +19,10 @@ import { getWeekKey, getPrevWeekKey } from '@/lib/week'
 import { sendMatchNotifications } from '@/lib/match-email'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     // ── 管理员认证 ──
@@ -83,6 +87,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: '查询失败' }, { status: 500 })
   }
 }
+
 
 export async function POST(req: NextRequest) {
   try {

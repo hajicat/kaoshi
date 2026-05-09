@@ -6,6 +6,7 @@ import { getClientIp, validateCsrfToken } from '@/lib/csrf'
 import { detectAttackPatterns } from '@/lib/security'
 
 
+
 /**
  * 用 SHA-256 哈希 token（与 forgot-password 保持一致）
  */
@@ -16,6 +17,9 @@ async function hashToken(token: string): Promise<string> {
     .map(b => b.toString(16).padStart(2, '0'))
     .join('')
 }
+
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {

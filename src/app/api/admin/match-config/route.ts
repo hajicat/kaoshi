@@ -11,6 +11,10 @@ import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { getMatchConfig, saveMatchConfig, clearMatchConfigCache } from '@/lib/match-engine'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')
@@ -32,6 +36,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: '读取配置失败' }, { status: 500 })
   }
 }
+
 
 export async function PUT(req: NextRequest) {
   try {

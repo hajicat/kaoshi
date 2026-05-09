@@ -15,6 +15,10 @@ import { validateCsrfToken, getCookieName } from '@/lib/csrf'
 import { getWeekKey, executeAutoMatch, handleManualMatch, executeAutoMatchSafe } from '@/lib/match-engine'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     // ── 身份验证 ──

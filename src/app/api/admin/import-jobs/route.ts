@@ -6,7 +6,11 @@ import { nanoid } from "nanoid";
 import { jsonOk, handleApiError } from "@/lib/api-helpers";
 import { eq } from "drizzle-orm";
 
+
 // 获取导入任务列表
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     await requireAdmin();
@@ -18,6 +22,7 @@ export async function GET() {
 }
 
 // 创建导入任务（上传文件）
+
 export async function POST(req: NextRequest) {
   try {
     const admin = await requireAdmin();

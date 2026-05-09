@@ -4,6 +4,10 @@ import { eq } from "drizzle-orm";
 import { requireAdmin } from "@/lib/auth/permissions";
 import { jsonOk, handleApiError } from "@/lib/api-helpers";
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     await requireAdmin();

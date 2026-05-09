@@ -7,6 +7,10 @@ import { verifyPassword, hashPassword } from "@/lib/auth/password";
 import { ChangePasswordSchema } from "@/lib/validation/auth";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     const session = await requireUser();

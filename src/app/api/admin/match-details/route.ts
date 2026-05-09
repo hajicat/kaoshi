@@ -18,6 +18,10 @@ import { calcSafety, calculateMatch, getMatchConfig, clearMatchConfigCache, gend
 import { calcSafetyV2, calculateMatchV2, loadUserForV2Matching, getMatchConfigV2, clearMatchConfigV2Cache, genderCompatibleV2 } from '@/lib/match-engine-v2'
 
 
+
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')

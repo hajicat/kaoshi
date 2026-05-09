@@ -4,12 +4,16 @@ import { verifyTokenSafe } from '@/lib/auth'
 import { setCsrfCookie, getCookieName } from '@/lib/csrf'
 
 
+
 /**
  * Combined home data endpoint - single API call for homepage.
  * Returns: public stats + user info (if authenticated)
  * This replaces calling /api/public-stats + /api/auth/me separately,
  * cutting cold-start latency in half.
  */
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const db = getDb()

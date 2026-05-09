@@ -6,7 +6,11 @@ import { requireAdmin } from "@/lib/auth/permissions";
 import { UpdateQuestionBankSchema } from "@/lib/validation/question";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 获取题库详情
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ bankId: string }> }
@@ -37,6 +41,7 @@ export async function GET(
 }
 
 // 更新题库
+
 export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ bankId: string }> }
@@ -69,6 +74,7 @@ export async function PATCH(
 }
 
 // 删除题库
+
 export async function DELETE(
   _req: NextRequest,
   { params }: { params: Promise<{ bankId: string }> }

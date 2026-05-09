@@ -8,7 +8,11 @@ import { hashPassword } from "@/lib/auth/password";
 import { CreateUserSchema } from "@/lib/validation/auth";
 import { jsonOk, jsonError, handleApiError } from "@/lib/api-helpers";
 
+
 // 获取用户列表
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     await requireAdmin();
@@ -29,6 +33,7 @@ export async function GET() {
 }
 
 // 创建用户
+
 export async function POST(req: NextRequest) {
   try {
     await requireAdmin();

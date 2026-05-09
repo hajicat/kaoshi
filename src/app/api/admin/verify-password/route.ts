@@ -5,6 +5,7 @@ import { getCookieName, validateCsrfToken } from '@/lib/csrf'
 import { logSecurityEvent } from '@/lib/security'
 
 
+
 /**
  * POST /api/admin/verify-password
  * Body: { password: string }
@@ -12,6 +13,9 @@ import { logSecurityEvent } from '@/lib/security'
  * 验证管理员"查看详情二级密码"（独立于登录密码）
  * 密码存储在 settings 表的 admin_view_password_hash 键中
  */
+
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     const cookieName = getCookieName('token')

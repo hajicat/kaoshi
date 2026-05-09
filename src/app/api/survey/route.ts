@@ -9,6 +9,7 @@ import { scoreGpsSamples, isNoEmailSchool, getSchoolShort } from '@/lib/geo'
 import { detectAttackPatterns } from '@/lib/security'
 
 
+
 // Valid answer options for each of the 32 questions (whitelist)
 const VALID_OPTIONS: Record<string, string[]> = {
   // A. 安全门槛题 (q1-q8)
@@ -73,6 +74,9 @@ function answerIndex(questionId: string, answer: string): number {
   if (!opts) return -1
   return opts.indexOf(answer)
 }
+
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {
