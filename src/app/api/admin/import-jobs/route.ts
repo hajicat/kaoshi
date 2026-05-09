@@ -74,6 +74,7 @@ export async function POST(req: NextRequest) {
       return jsonOk({ id, status: "parsed" }, 201);
     } catch (parseError) {
       const msg = parseError instanceof Error ? parseError.message : "AI 解析失败";
+      console.error("[import] 解析失败:", msg);
       await db
         .update(importJobs)
         .set({
@@ -83,7 +84,7 @@ export async function POST(req: NextRequest) {
         })
         .where(eq(importJobs.id, id));
 
-      return jsonOk({ id, status: "failed", errorMessage: msg }, 201);
+      return jsonOk({ id, status: "failed", message: msg }, 422);
     }
   } catch (error) {
     return handleApiError(error);

@@ -30,9 +30,17 @@ export default function AdminImportPage() {
     loadJobs();
   }, []);
 
+  const MAX_FILE_SIZE = 900 * 1024; // 900KB，留余量给 multipart 开销
+
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    if (file.size > MAX_FILE_SIZE) {
+      alert(`文件过大（${(file.size / 1024).toFixed(0)}KB），最大支持 900KB`);
+      e.target.value = "";
+      return;
+    }
 
     setUploading(true);
     try {
@@ -47,10 +55,11 @@ export default function AdminImportPage() {
       if (res.ok) {
         loadJobs();
       } else {
-        alert(data.message || "上传失败");
+        alert(data.message || `上传失败 (HTTP ${res.status})`);
       }
-    } catch {
-      alert("上传失败");
+    } catch (err) {
+      console.error("[upload] 上传异常:", err);
+      alert("上传失败，请查看控制台获取详情");
     } finally {
       setUploading(false);
       e.target.value = "";
