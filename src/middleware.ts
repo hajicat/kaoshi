@@ -9,6 +9,11 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
   const isUploadEndpoint = pathname.startsWith('/api/admin/import-jobs') && request.method === 'POST'
   const contentLength = request.headers.get('content-length')
+
+  if (isUploadEndpoint) {
+    console.log('[middleware] 放行上传请求:', pathname, 'content-length:', contentLength)
+  }
+
   if (!isUploadEndpoint && contentLength && Number(contentLength) > MAX_BODY_SIZE) {
     return new NextResponse(
       JSON.stringify({ error: '请求体过大' }),

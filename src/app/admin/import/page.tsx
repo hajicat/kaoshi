@@ -47,11 +47,14 @@ export default function AdminImportPage() {
       const formData = new FormData();
       formData.append("file", file);
 
+      console.log("[upload] 开始上传:", file.name, file.size, "bytes", file.type);
       const res = await fetch("/api/admin/import-jobs", {
         method: "POST",
         body: formData,
       });
+      console.log("[upload] 响应状态:", res.status, res.statusText);
       const data = await res.json();
+      console.log("[upload] 响应数据:", data);
       if (res.ok) {
         loadJobs();
       } else {
@@ -59,7 +62,9 @@ export default function AdminImportPage() {
       }
     } catch (err) {
       console.error("[upload] 上传异常:", err);
-      alert("上传失败，请查看控制台获取详情");
+      console.error("[upload] 错误类型:", err instanceof TypeError ? "TypeError" : typeof err);
+      console.error("[upload] 错误信息:", err instanceof Error ? err.message : String(err));
+      alert("上传失败: " + (err instanceof Error ? err.message : String(err)));
     } finally {
       setUploading(false);
       e.target.value = "";

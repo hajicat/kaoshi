@@ -37,8 +37,10 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  console.log("[import] POST 收到请求, content-type:", req.headers.get("content-type"), "content-length:", req.headers.get("content-length"));
   try {
     const admin = await requireAdmin();
+    console.log("[import] admin 认证通过:", admin.userId);
     const formData = await req.formData();
     const file = formData.get("file") as File;
 
